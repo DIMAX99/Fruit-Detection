@@ -22,7 +22,6 @@ export default function Home() {
               Gallery
             </Link>
           </nav>
-          <Button>Get Started</Button>
         </div>
       </header>
       <main className="flex-1">
@@ -34,16 +33,15 @@ export default function Home() {
                   Identify Any Fruit in Seconds
                 </h1>
                 <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl">
-                  Our advanced AI technology can identify over 100 different types of fruits from a single image.
+                  Our model can identify over 5 different types of fruits from a single image as fresh and rotten.
                 </p>
               </div>
               <div className="flex flex-col gap-2 min-[400px]:flex-row">
+              <Link href="/detect">
                 <Button size="lg" className="bg-green-600 hover:bg-green-700">
                   Try It Now
                 </Button>
-                <Button size="lg" variant="outline">
-                  Learn More
-                </Button>
+                </Link>
               </div>
             </div>
           </div>
@@ -58,8 +56,7 @@ export default function Home() {
                 </div>
                 <h2 className="text-3xl font-bold tracking-tighter md:text-4xl">Upload Your Fruit Image</h2>
                 <p className="text-gray-500 md:text-xl">
-                  Simply upload a photo of any fruit, and our AI will identify it instantly. Get detailed information
-                  about the fruit, including nutritional facts and ripeness.
+                  Simply upload a photo of any fruit, and our AI will identify it instantly.
                 </p>
                 <div className="flex flex-col gap-2 min-[400px]:flex-row">
                   <Link href="/detect">
@@ -96,7 +93,7 @@ export default function Home() {
                   accuracy.
                 </p>
               </div>
-              <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 w-full max-w-5xl">
+              <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-2 w-full max-w-5xl">
                 <div className="flex flex-col items-center space-y-2 border rounded-lg p-6 bg-white shadow-sm">
                   <div className="p-3 rounded-full bg-green-100">
                     <Upload className="h-6 w-6 text-green-600" />
@@ -125,29 +122,6 @@ export default function Home() {
                   <h3 className="text-xl font-bold">Analyze</h3>
                   <p className="text-gray-500 text-center">
                     Our AI processes the image and identifies the fruit in seconds.
-                  </p>
-                </div>
-                <div className="flex flex-col items-center space-y-2 border rounded-lg p-6 bg-white shadow-sm">
-                  <div className="p-3 rounded-full bg-green-100">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="h-6 w-6 text-green-600"
-                    >
-                      <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
-                      <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
-                    </svg>
-                  </div>
-                  <h3 className="text-xl font-bold">Learn</h3>
-                  <p className="text-gray-500 text-center">
-                    Get detailed information about the fruit's nutritional value and more.
                   </p>
                 </div>
               </div>
@@ -186,7 +160,7 @@ export default function Home() {
               <Apple className="h-6 w-6 text-green-500" />
               <span>FruitDetect</span>
             </div>
-            <p className="text-sm text-gray-500">The most advanced fruit detection technology on the web.</p>
+            <p className="text-sm text-gray-500">An Yolo Based fruit detection technology on the web.</p>
           </div>
           <div className="flex-1 space-y-4">
             <div className="font-medium">Quick Links</div>

@@ -15,6 +15,7 @@ export default function DetectPage() {
   const [img64,setimg64]=useState<string | null>(null)
   const [isAnalyzing, setIsAnalyzing] = useState(false)
   const [result, setResult] = useState<{ name: string; confidence: number }[]>([]);
+  const [pdf,setpdf]=useState('');
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = e.target.files?.[0]
@@ -64,6 +65,7 @@ export default function DetectPage() {
         });
         const data=await response.json();
         const img64=`data:image/png;base64,${data.image}`;
+        setpdf(data.report_id);
         setimg64(img64);
         setResult(data.classes_detected);
       }catch(e){
@@ -78,6 +80,13 @@ export default function DetectPage() {
     setPreview(null)
     setResult([])
   }
+  const previewPDF = (reportId: string) => {
+    window.open(`http://localhost:8080/download/${reportId}`, '_blank');
+  };
+  
+  
+  
+  
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -97,7 +106,7 @@ export default function DetectPage() {
       </header>
       <main className="flex-1 py-12">
         <div className="container px-4 md:px-6">
-          <div className="mx-auto max-w-3xl space-y-8">
+          <div className="mx-auto max-w-full space-y-8">
             <div className="space-y-2 text-center">
               <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Fruit Detection</h1>
               <p className="text-gray-500 md:text-xl">
@@ -106,9 +115,9 @@ export default function DetectPage() {
             </div>
 
             {result.length<1 ? (
-              <div className="space-y-6">
+              <div className="space-y-6 max-w-full">
                 <div
-                  className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center cursor-pointer hover:border-green-500 transition-colors"
+                  className="max-w-3xl m-auto border-2 border-dashed border-gray-300 rounded-lg p-8 text-center cursor-pointer hover:border-green-500 transition-colors"
                   onDrop={handleDrop}
                   onDragOver={handleDragOver}
                   onClick={() => document.getElementById("file-upload")?.click()}
@@ -146,9 +155,10 @@ export default function DetectPage() {
                 )}
               </div>
             ) : (
-              <div className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-6">
-                  <Card>
+              <div className="space-y-6 max-w-full">
+                <div className="flex gap-6">
+                  <div className="w-3/5">
+                      <Card className="h-full">
                     <CardContent className="p-6">
                       <div className="aspect-square overflow-hidden rounded-lg mb-4">
                         <img
@@ -162,12 +172,14 @@ export default function DetectPage() {
                       </div>
                     </CardContent>
                   </Card>
-
-                  {result.length > 0 ? (
+                  </div>
+                
+                  <div className="w-2/5 h-fit gap-5 grid grid-cols-2">
+                    {result.length > 0 ? (
                     result.map((results, index) => (
-                      <Card key={index}>
-                        <CardContent className="p-6 space-y-4">
-                          <div className="space-y-2">
+                      <Card key={index} className="h-fit w-fit">
+                        <CardContent className="p-6">
+                          <div className="space-y-1">
                             <h2 className="text-2xl font-bold text-center">Detected Fruit #{index + 1}</h2>
                             <div className="text-center text-lg font-semibold text-purple-700">{results.name}</div>
                             <div className="flex items-center justify-center gap-2">
@@ -184,13 +196,15 @@ export default function DetectPage() {
                     <div className="text-center text-gray-500">No fruits detected yet.</div>
                   )}
 
+                  </div>
+                  
                 </div>
 
                 <div className="flex justify-center gap-4">
                   <Button variant="outline" onClick={resetDetection}>
                     Detect Another Fruit
                   </Button>
-                  <Button className="bg-green-600 hover:bg-green-700">Save Results</Button>
+                  <Button className="bg-green-600 hover:bg-green-700" onClick={()=>previewPDF(pdf)}>Save Results</Button>
                 </div>
               </div>
             )}
