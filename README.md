@@ -90,8 +90,8 @@ Each fruit is classified into:
 
 Download the trained YOLOv8m model (`best.pt`) from the link below and place it inside the `model` folder in the backend:
 
-🔗 **[Download YOLOv8m Model from Google Drive](#)**  
-> 📌 Replace the `#` with your actual Google Drive share link.
+🔗 **[Download YOLOv8m Model from Google Drive](https://drive.google.com/drive/folders/18hKYGwXA-Q4SHEpfrvCtiTH3qWy5hMfe?usp=drive_link)**  
+
 
 ---
 
