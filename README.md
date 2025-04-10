@@ -1,6 +1,6 @@
 # 🍎 Fruit Detection and Classification using YOLOv8m
 
-This project is a full-stack fruit detection application that uses **YOLOv8m** for real-time fruit classification and bounding box detection. Users can upload fruit images, detect fruits like mango, apple, banana, orange, and strawberry, and classify them as **fresh** or **rotten**. Results are displayed on the frontend and can be saved as a **PDF report** including detection coordinates.
+This project is a full-stack fruit detection application that uses **YOLOv8m** for fruit classification and bounding box detection. Users can upload fruit images, detect fruits like mango, apple, banana, orange, and strawberry, and classify them as **fresh** or **rotten**. Results are displayed on the frontend and can be saved as a **PDF report** including detection coordinates.
 
 ---
 
